@@ -1,44 +1,42 @@
-import { StyleSheet } from "react-native";
-import Constants from "expo-constants";
+import { getStatusBarHeight } from "react-native-status-bar-height";
+import styled from "styled-components/native";
 
-export default StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 24,
-    paddingTop: Constants.statusBarHeight + 20
-  },
-  header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
-  },
-  title: {
-    fontSize: 30,
-    marginBottom: 25,
-    marginTop: 25,
-    color: "#13131a",
-    fontWeight: "bold"
-  },
-  dish: {
-    padding: 24,
-    borderRadius: 8,
-    backgroundColor: "#fff",
-    marginBottom: 16,
-  },
-  dishValue: {
-    marginTop: 8,
-    fontSize: 15,
-    marginBottom: 24,
-    color: "#737380"
-  },
-  detailsButton: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
-  },
-  detailsButtonText: {
-    color: "#e02041",
-    fontSize: 15,
-    fontWeight: "bold"
-  }
-});
+export const Container = styled.View`
+  flex: 1;
+  padding-horizontal: 24px
+  padding-top: ${40 + getStatusBarHeight(true)}px;
+`;
+
+export const Header = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const Title = styled.Text`
+  font-size: 30px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  color: #13131a;
+  font-weight: bold;
+`;
+
+export const Dish = styled.View`
+  padding: 24px;
+  border-radius: 8px;
+  background-color: #fff;
+  margin-bottom: 16px;
+`;
+
+export const DishValue = styled.Text`
+  margin-top: 8px;
+  font-size: 18px;
+  margin-bottom: 24px;
+  color: #737380;
+`;
+
+export const DishPhoto = styled.Image`
+  height: 300px;
+  width: 100%;
+  border-radius: 15px;
+`;
