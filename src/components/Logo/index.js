@@ -8,7 +8,7 @@ export default function Logo() {
       <MaterialCommunityIcons
         name="food"
         size={125}
-        color="#e02041"
+        color="#a0131b"
       ></MaterialCommunityIcons>
     </View>
   );

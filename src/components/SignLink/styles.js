@@ -6,7 +6,7 @@ export const SignLinkToucheable = styled.TouchableHighlight`
 `;
 
 export const SignLinkText = styled.Text`
-  color: #e02041;
+  color: #a0131b;
   font-weight: bold;
   font-size: 16px;
   text-align: center;

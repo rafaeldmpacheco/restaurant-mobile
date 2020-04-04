@@ -60,14 +60,14 @@ export default function Dishes() {
         <MaterialCommunityIcons
           name="food"
           size={75}
-          color="#e02041"
+          color="#a0131b"
         ></MaterialCommunityIcons>
 
         <MaterialCommunityIcons
           onPress={logOut}
           name="logout"
           size={45}
-          color="#e02041"
+          color="#a0131b"
         ></MaterialCommunityIcons>
       </Header>
 
