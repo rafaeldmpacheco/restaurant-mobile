@@ -71,7 +71,7 @@ export default function Dishes() {
         ></MaterialCommunityIcons>
       </Header>
 
-      <Title>Bem-vindo!</Title>
+      <Title>Bem-vindo(a)!</Title>
 
       <FlatList
         data={dishes}

@@ -22,13 +22,12 @@ export default function SignIn() {
     if (username.length === 0 || password.length === 0) {
       setError("Preencha usuário e senha para continuar!");
     } else {
+      const body = { username, password };
       try {
-        await api.post("/5defab092f0000e7848e0c9e", {
-          username,
-          password
+        api.post("/5defab092f0000e7848e0c9e", body).then(() => {
+          setError("");
+          navigation.navigate("Dishes");
         });
-        setError("");
-        navigation.navigate("Dishes");
       } catch (err) {
         setError("Houve um problema com o login, verifique suas credenciais!");
       }

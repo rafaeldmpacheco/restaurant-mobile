@@ -26,15 +26,12 @@ export default function SignUp() {
       setError("Preencha todos os campos para continuar!");
     } else {
       try {
-        await api.post("/5defab092f0000e7848e0c9e ", {
-          username,
-          password
+        const body = { username, password };
+        api.post("/5defab092f0000e7848e0c9e", body).then(() => {
+          setError("");
+          setSuccess("Conta criada com sucesso! Redirecionando para o login");
+          navigation.goBack();
         });
-
-        setError("");
-        setSuccess("Conta criada com sucesso! Redirecionando para o login");
-
-        navigation.goBack();
       } catch (err) {
         setSuccess("");
         setError(
