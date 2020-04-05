@@ -1,25 +1,24 @@
-import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Logo from "../../components/Logo";
 import SignButton from "../../components/SignButton";
 import SignLink from "../../components/SignLink";
 import { Container, Input } from "./styles";
-import { signUpRequest } from "../../store/modules/auth/actions";
+import { loginRequest } from "../../store/modules/auth/actions";
 
-export default function SignUp() {
+export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const navigation = useNavigation();
-  const dispatch = useDispatch();
 
-  function navigateBack() {
-    navigation.goBack();
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.auth.loading);
+
+  async function handleLoginPress() {
+    dispatch(loginRequest(username, password));
   }
 
-  async function handleSignUpPress() {
-    dispatch(signUpRequest(username, password, confirmPassword));
+  function navigateToSignUp() {
+    navigation.navigate("SignUp");
   }
 
   return (
@@ -41,18 +40,13 @@ export default function SignUp() {
         autoCorrect={false}
         secureTextEntry
       />
-      <Input
-        placeholder="Confirm password"
-        value={confirmPassword}
-        onChangeText={setConfirmPassword}
-        autoCapitalize="none"
-        autoCorrect={false}
-        secureTextEntry
+
+      <SignButton
+        onPress={handleLoginPress}
+        label={loading ? "Loading ..." : "Login"}
       />
 
-      <SignButton onPress={handleSignUpPress} label="Register" />
-
-      <SignLink onPress={navigateBack} label="Back to login" />
+      <SignLink onPress={navigateToSignUp} label="Sign Up" />
     </Container>
   );
 }

@@ -1,20 +1,25 @@
-import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import React from "react";
+import { Provider } from "react-redux";
 import Dishes from "./pages/Dishes";
-import SignIn from "./pages/SignIn";
+import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import store from "./store";
+import "./config/ReactotronConfig";
 
 const AppStack = createStackNavigator();
 
 export default function Routes() {
   return (
-    <NavigationContainer>
-      <AppStack.Navigator screenOptions={{ headerShown: false }}>
-        <AppStack.Screen name="SignIn" component={SignIn}></AppStack.Screen>
-        <AppStack.Screen name="SignUp" component={SignUp}></AppStack.Screen>
-        <AppStack.Screen name="Dishes" component={Dishes}></AppStack.Screen>
-      </AppStack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <AppStack.Navigator screenOptions={{ headerShown: false }}>
+          <AppStack.Screen name="Login" component={Login}></AppStack.Screen>
+          <AppStack.Screen name="SignUp" component={SignUp}></AppStack.Screen>
+          <AppStack.Screen name="Dishes" component={Dishes}></AppStack.Screen>
+        </AppStack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
