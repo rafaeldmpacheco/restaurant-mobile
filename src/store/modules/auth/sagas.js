@@ -1,53 +1,49 @@
-import { useNavigation } from "@react-navigation/native";
 import { Alert } from "react-native";
-import { all, call, put, takeLatest } from "redux-saga/effects";
+import { all, call, takeLatest, put } from "redux-saga/effects";
 import api from "../../../services/api";
-import { loginSuccess, signFailure } from "./actions";
-// const navigation = useNavigation();
+import { loginComplete, signUpComplete } from "./actions";
+import { NavigationActions } from "react-navigation";
 
 export function* login({ payload }) {
   try {
-    if (username.length === 0 || password.length === 0) {
+    if (payload.username.length > 0 && payload.password.length > 0) {
       yield call(api.post, "/5defab092f0000e7848e0c9e", payload);
 
-      yield put(loginSuccess());
+      yield put(loginComplete());
 
-      // navigation.navigate("Dishes");
+      yield put(NavigationActions.navigate({ routeName: "Dishes" }));
     } else {
-      yield put(signFailure());
-
+      yield put(loginComplete());
       Alert.alert("Preencha usuário e senha para continuar!");
     }
   } catch (err) {
-    yield put(signFailure());
-
-    Alert.alert(
-      "Erro",
-      "Erro ao realizar o login, verifique suas credenciais!"
-    );
+    yield put(loginComplete());
+    Alert.alert("Erro ao realizar o login, verifique suas credenciais!");
   }
 }
 
 export function* signUp({ payload }) {
   try {
-    if (password === confirmPassword) {
+    if (payload.password === payload.confirmPassword) {
       yield call(api.post, "/5defab092f0000e7848e0c9e", payload);
 
-      // navigation.navigate("Login");
+      yield put(signUpComplete());
+
+      yield put(NavigationActions.navigate({ routeName: "Login" }));
     } else {
-      yield put(signFailure());
+      yield put(signUpComplete());
 
       Alert.alert("As senhas informadas precisam ser iguais!");
     }
   } catch (err) {
-    yield put(signFailure());
+    yield put(signUpComplete());
 
-    Alert.alert("Erro", "Erro ao realizar o cadastro, verifique seus dados!");
+    Alert.alert("Erro ao realizar o cadastro, verifique seus dados!");
   }
 }
 
-export function signOut() {
-  // navigation.navigate("Login");
+export function* signOut() {
+  yield put(NavigationActions.navigate("Login"));
 }
 
 export default all([

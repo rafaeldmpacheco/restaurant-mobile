@@ -1,15 +1,16 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Logo from "../../components/Logo";
 import SignButton from "../../components/SignButton";
 import SignLink from "../../components/SignLink";
-import { Container, Input } from "./styles";
 import { loginRequest } from "../../store/modules/auth/actions";
+import { Container, Input } from "./styles";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigation = useNavigation();
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.auth.loading);
 

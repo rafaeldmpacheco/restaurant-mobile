@@ -11,11 +11,15 @@ export default function auth(state = INITIAL_STATE, action) {
         draft.loading = true;
         break;
       }
-      case "@auth/LOGIN_SUCCESS": {
+      case "@auth/LOGIN_COMPLETE": {
         draft.loading = false;
         break;
       }
-      case "@auth/SIGN_FAILURE": {
+      case "@auth/SIGN_REQUEST": {
+        draft.loading = false;
+        break;
+      }
+      case "@auth/SIGN_COMPLETE": {
         draft.loading = false;
         break;
       }

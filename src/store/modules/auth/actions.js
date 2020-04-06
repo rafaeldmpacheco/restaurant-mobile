@@ -5,9 +5,9 @@ export function loginRequest(username, password) {
   };
 }
 
-export function loginSuccess() {
+export function loginComplete() {
   return {
-    type: "@auth/LOGIN_SUCCESS",
+    type: "@auth/LOGIN_COMPLETE",
   };
 }
 
@@ -18,9 +18,9 @@ export function signUpRequest(username, password, confirmPassword) {
   };
 }
 
-export function signFailure() {
+export function signUpComplete() {
   return {
-    type: "@auth/SIGN_FAILURE",
+    type: "@auth/SIGN_COMPLETE",
   };
 }
 

@@ -2,11 +2,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import { Provider } from "react-redux";
+
+import "./config/ReactotronConfig";
+
 import Dishes from "./pages/Dishes";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-import store from "./store";
-import "./config/ReactotronConfig";
+import { store } from "./store";
 
 const AppStack = createStackNavigator();
 
