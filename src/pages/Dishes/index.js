@@ -1,4 +1,5 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { FlatList } from "react-native";
 import { useDispatch } from "react-redux";
@@ -38,9 +39,10 @@ const dishes = [
 
 export default function Dishes() {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
 
   function handleLogOut() {
-    dispatch(signOut());
+    dispatch(signOut(navigation));
   }
 
   return (

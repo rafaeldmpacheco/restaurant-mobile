@@ -19,7 +19,7 @@ export default function SignUp() {
   }
 
   async function handleSignUpPress() {
-    dispatch(signUpRequest(username, password, confirmPassword));
+    dispatch(signUpRequest(username, password, confirmPassword, navigation));
   }
 
   return (

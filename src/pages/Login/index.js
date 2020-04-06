@@ -15,7 +15,7 @@ export default function Login() {
   const loading = useSelector((state) => state.auth.loading);
 
   async function handleLoginPress() {
-    dispatch(loginRequest(username, password));
+    dispatch(loginRequest(username, password, navigation));
   }
 
   function navigateToSignUp() {

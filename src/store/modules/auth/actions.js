@@ -1,7 +1,8 @@
-export function loginRequest(username, password) {
+export function loginRequest(username, password, navigation) {
   return {
     type: "@auth/LOGIN_REQUEST",
     payload: { username, password },
+    navigation,
   };
 }
 
@@ -11,10 +12,11 @@ export function loginComplete() {
   };
 }
 
-export function signUpRequest(username, password, confirmPassword) {
+export function signUpRequest(username, password, confirmPassword, navigation) {
   return {
     type: "@auth/SIGN_UP_REQUEST",
     payload: { username, password, confirmPassword },
+    navigation,
   };
 }
 
@@ -24,8 +26,9 @@ export function signUpComplete() {
   };
 }
 
-export function signOut() {
+export function signOut(navigation) {
   return {
     type: "@auth/SIGN_OUT",
+    navigation,
   };
 }
